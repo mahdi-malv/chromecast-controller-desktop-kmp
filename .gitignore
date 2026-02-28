@@ -1,0 +1,52 @@
+# Gradle
+.gradle/
+build/
+**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# IntelliJ IDEA / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Kotlin
+*.class
+*.kotlin_module
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local config
+local.properties
+*.local.properties
+
+# Kotlin/Native
+*.kexe
+*.dSYM/
+*.so
+*.dll
+*.dylib
+
+# CocoaPods (iOS)
+Pods/
+*.xcworkspace
+!default.xcworkspace
+
+# Xcode
+xcuserdata/
+*.xcodeproj/project.xcworkspace
+DerivedData/
+
+# Node / web targets
+node_modules/
+.next/
+dist/
+.nuxt/
+
+# Logs
+*.log
