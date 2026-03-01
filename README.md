@@ -1,34 +1,27 @@
-# CastMaster Pro
+This is a Kotlin Multiplatform project targeting Desktop (JVM).
 
-Simple ADB remote controller — macOS desktop utility using Compose Multiplatform (KMP). Material 3 control pane: remote, volume, file push, Logcat, expert shell.
+* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
+  It contains several subfolders:
+  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
+  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
+    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
+    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
+    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
+    folder is the appropriate location.
 
-## Requirements
+### Build and Run Desktop (JVM) Application
 
-- **JDK 17+**
-- **adb** on `PATH` (e.g. `/usr/local/bin`)
-- Chromecast (or any ADB device) connected via USB or network (`IP:5555`)
+To build and run the development version of the desktop app, use the run configuration from the run widget
+in your IDE’s toolbar or run it directly from the terminal:
+- on macOS/Linux
+  ```shell
+  ./gradlew :composeApp:run
+  ```
+- on Windows
+  ```shell
+  .\gradlew.bat :composeApp:run
+  ```
 
-## Run
-Use Android studio or run the gradle command:
+---
 
-```bash
-   ./gradlew desktopRun
-```
-
-## Config
-
-- Default device ID is stored in `~/.castmaster/device_id`. Set it in the app header and click **Save as default**, or override per session in the device field.
-- All ADB commands use `adb -s <device_id>`.
-
-## Features
-
-- **Header**: Device ID (editable), connection status (refreshed every 3s), Save as default.
-- **Remote**: D-Pad, Home, Back, Play/Pause (keyevent shell).
-- **Volume**: M3 slider, 150 ms debounce, `media volume --stream 3 --set N`.
-- **File push**: **Push file to /sdcard/Download/** opens a file chooser; success/failure via Snackbar.
-- **Logcat**: Last 1000 lines, Clear, filter (client-side), auto-scroll, color by level (V/D/I/W/E).
-- **Expert mode**: Raw shell command + **Send**; output in Snackbar.
-
-## Cleanup
-
-On window close, logcat is stopped and the app exits.
+Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
