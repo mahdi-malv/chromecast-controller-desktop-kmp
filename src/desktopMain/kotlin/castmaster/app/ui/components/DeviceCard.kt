@@ -31,7 +31,10 @@ fun DeviceCard(
         colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant),
         modifier = modifier.fillMaxWidth(),
     ) {
-        Column(Modifier.padding(12.dp)) {
+        Column(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
             Text(
                 "Device",
                 style = MaterialTheme.typography.labelMedium,
@@ -53,6 +56,7 @@ fun DeviceCard(
                     if (connected) "Connected" else "Disconnected",
                     color = if (connected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(start = 4.dp),
                 )
                 TextButton(onClick = onSaveAsDefault) { Text("Save as default") }
             }

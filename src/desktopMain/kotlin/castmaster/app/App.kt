@@ -20,6 +20,7 @@ import castmaster.app.ui.controlpanel.ControlPanel
 fun App(
     deviceManager: DeviceManager,
     logcatObserver: LogcatObserver,
+    modifier: Modifier = Modifier
 ) {
     val configId = remember { DeviceConfig.getDeviceId() }
     var override by remember { mutableStateOf<String?>(null) }
@@ -36,7 +37,7 @@ fun App(
     }
 
     ControlPanel(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background),
         deviceManager = deviceManager,
