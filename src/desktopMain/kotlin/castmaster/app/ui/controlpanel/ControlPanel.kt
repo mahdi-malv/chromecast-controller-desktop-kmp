@@ -22,13 +22,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import castmaster.app.device.DeviceManager
-import castmaster.app.device.LogcatObserver
 import castmaster.app.ui.components.DeviceCard
 import castmaster.app.ui.components.ExpertSection
 import castmaster.app.ui.components.FilePushSection
-import castmaster.app.ui.components.LogcatSection
 import castmaster.app.ui.components.RemoteSection
-import castmaster.app.ui.components.VolumeSection
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -36,7 +33,6 @@ import kotlinx.coroutines.launch
 fun ControlPanel(
     modifier: Modifier,
     deviceManager: DeviceManager,
-    logcatObserver: LogcatObserver,
     deviceId: String,
     onDeviceIdOverride: (String) -> Unit,
     onSaveDeviceToConfig: () -> Unit,
@@ -77,20 +73,13 @@ fun ControlPanel(
             onShell = { scope.launch { deviceManager.runShell(it) } },
         )
 
-        VolumeSection(
-            enabled = deviceManager.hasDevice(),
-            onShell = { scope.launch { deviceManager.runShell(it) } },
-        )
-
         FilePushSection(
             enabled = deviceManager.hasDevice(),
             onPush = { file ->
-                scope.launch {
-                    val ok = deviceManager.pushFile(file)
-                    snackbarHostState.showSnackbar(
-                        if (ok) "Pushed ${file.name} to /sdcard/Download/" else "Push failed"
-                    )
-                }
+                val ok = deviceManager.pushFile(file)
+                snackbarHostState.showSnackbar(
+                    if (ok) "Pushed ${file.name} to /sdcard/Download/" else "Push failed"
+                )
             },
         )
 
@@ -105,11 +94,5 @@ fun ControlPanel(
         )
 
         SnackbarHost(hostState = snackbarHostState)
-
-        LogcatSection(
-            enabled = deviceManager.hasDevice(),
-            logcatObserver = logcatObserver,
-            onStart = { logcatObserver.start() },
-        )
     }
 }

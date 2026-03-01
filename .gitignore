@@ -16,6 +16,7 @@ out/
 # Kotlin
 *.class
 *.kotlin_module
+.kotlin
 
 # OS
 .DS_Store
