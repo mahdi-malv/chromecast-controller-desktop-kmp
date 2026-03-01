@@ -1,11 +1,11 @@
 # CastMaster Pro
 
-macOS desktop utility using Compose Multiplatform (KMP). Split view: **2/3** device mirroring via **scrcpy** and **1/3** Material 3 control pane (remote, volume, file push, Logcat, expert shell).
+Simple ADB remote controller — macOS desktop utility using Compose Multiplatform (KMP). Material 3 control pane: remote, volume, file push, Logcat, expert shell.
 
 ## Requirements
 
 - **JDK 17+**
-- **adb** and **scrcpy** on `PATH` (e.g. `/usr/local/bin`)
+- **adb** on `PATH` (e.g. `/usr/local/bin`)
 - Chromecast (or any ADB device) connected via USB or network (`IP:5555`)
 
 ## Setup
@@ -26,14 +26,13 @@ macOS desktop utility using Compose Multiplatform (KMP). Split view: **2/3** dev
 
 ## Features
 
-- **Mirror pane**: Placeholder + **Start scrcpy** to launch scrcpy for the current device.
 - **Header**: Device ID (editable), connection status (refreshed every 3s), Save as default.
 - **Remote**: D-Pad, Home, Back, Play/Pause (keyevent shell).
-- **Volume**: M3 slider, 150 ms debounce, `media volume --stream 3 --set N`.
+- **Volume**: M3 slider, 150 ms debounce, `media volume --stream 3 --set N`.
 - **File push**: **Push file to /sdcard/Download/** opens a file chooser; success/failure via Snackbar.
 - **Logcat**: Last 1000 lines, Clear, filter (client-side), auto-scroll, color by level (V/D/I/W/E).
 - **Expert mode**: Raw shell command + **Send**; output in Snackbar.
 
 ## Cleanup
 
-On window close, scrcpy and logcat processes are stopped, then the app exits.
+On window close, logcat is stopped and the app exits.

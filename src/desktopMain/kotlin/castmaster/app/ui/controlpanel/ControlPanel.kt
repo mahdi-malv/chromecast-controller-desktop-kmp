@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
@@ -22,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import castmaster.app.device.DeviceManager
 import castmaster.app.device.LogcatObserver
-import castmaster.app.device.ScrcpyBridge
 import castmaster.app.ui.components.DeviceCard
 import castmaster.app.ui.components.ExpertSection
 import castmaster.app.ui.components.FilePushSection
@@ -37,7 +37,6 @@ fun ControlPanel(
     modifier: Modifier,
     deviceManager: DeviceManager,
     logcatObserver: LogcatObserver,
-    scrcpyBridge: ScrcpyBridge,
     deviceId: String,
     onDeviceIdOverride: (String) -> Unit,
     onSaveDeviceToConfig: () -> Unit,
@@ -60,7 +59,7 @@ fun ControlPanel(
 
     Column(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .verticalScroll(rememberScrollState())
             .background(MaterialTheme.colorScheme.surface)
             .padding(16.dp),
@@ -95,12 +94,6 @@ fun ControlPanel(
             },
         )
 
-        LogcatSection(
-            enabled = deviceManager.hasDevice(),
-            logcatObserver = logcatObserver,
-            onStart = { logcatObserver.start() },
-        )
-
         ExpertSection(
             enabled = deviceManager.hasDevice(),
             onShell = { cmd ->
@@ -112,5 +105,11 @@ fun ControlPanel(
         )
 
         SnackbarHost(hostState = snackbarHostState)
+
+        LogcatSection(
+            enabled = deviceManager.hasDevice(),
+            logcatObserver = logcatObserver,
+            onStart = { logcatObserver.start() },
+        )
     }
 }

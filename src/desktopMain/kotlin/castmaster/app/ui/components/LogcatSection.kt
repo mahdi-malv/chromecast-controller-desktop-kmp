@@ -40,7 +40,7 @@ import castmaster.app.device.LogcatObserver
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ColumnScope.LogcatSection(
+fun LogcatSection(
     enabled: Boolean,
     logcatObserver: LogcatObserver,
     onStart: () -> Unit,
@@ -61,7 +61,7 @@ fun ColumnScope.LogcatSection(
     Card(
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant),
-        modifier = modifier.fillMaxWidth().weight(1f),
+        modifier = modifier.fillMaxWidth(),
     ) {
         Column(Modifier.padding(12.dp).fillMaxSize()) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
