@@ -8,16 +8,12 @@ Simple ADB remote controller — macOS desktop utility using Compose Multiplatfo
 - **adb** on `PATH` (e.g. `/usr/local/bin`)
 - Chromecast (or any ADB device) connected via USB or network (`IP:5555`)
 
-## Setup
+## Run
+Use Android studio or run the gradle command:
 
-1. **Gradle wrapper** (if `gradle/wrapper/gradle-wrapper.jar` is missing):
-   ```bash
-   gradle wrapper
-   ```
-2. Run:
-   ```bash
+```bash
    ./gradlew desktopRun
-   ```
+```
 
 ## Config
 
