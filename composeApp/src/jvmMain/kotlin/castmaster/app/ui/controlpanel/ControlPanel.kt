@@ -42,6 +42,10 @@ fun ControlPanel(
     var connected by remember { mutableStateOf(false) }
     var deviceIdInput by remember(deviceId) { mutableStateOf(deviceId) }
 
+    LaunchedEffect(Unit) {
+        deviceManager.adbError?.let { snackbarHostState.showSnackbar(it) }
+    }
+
     LaunchedEffect(deviceId) {
         connected = deviceManager.isDeviceConnected()
     }
