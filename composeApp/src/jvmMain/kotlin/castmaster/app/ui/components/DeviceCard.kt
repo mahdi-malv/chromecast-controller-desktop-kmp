@@ -1,5 +1,6 @@
 package castmaster.app.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -17,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import castmaster.app.theme.castMasterColors
 
 @Composable
 fun DeviceCard(
@@ -26,9 +29,14 @@ fun DeviceCard(
     onSaveAsDefault: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val appColors = castMasterColors()
+    val statusContainerColor = if (connected) appColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val statusContentColor = if (connected) appColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
+    val statusLabel = if (connected) "Connected" else "Disconnected"
     Card(
         shape = RoundedCornerShape(28.dp),
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant),
+        colors = CardDefaults.cardColors(containerColor = appColors.panel),
+        border = BorderStroke(1.dp, appColors.panelBorder),
         modifier = modifier.fillMaxWidth(),
     ) {
         Column(
@@ -38,7 +46,7 @@ fun DeviceCard(
             Text(
                 "Device",
                 style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.primary,
             )
             OutlinedTextField(
                 value = deviceIdInput,
@@ -52,12 +60,17 @@ fun DeviceCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    if (connected) "Connected" else "Disconnected",
-                    color = if (connected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
-                    style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(start = 4.dp),
-                )
+                Surface(
+                    color = statusContainerColor,
+                    contentColor = statusContentColor,
+                    shape = RoundedCornerShape(999.dp),
+                ) {
+                    Text(
+                        text = statusLabel,
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
+                    )
+                }
                 TextButton(onClick = onSaveAsDefault) { Text("Save as default") }
             }
         }

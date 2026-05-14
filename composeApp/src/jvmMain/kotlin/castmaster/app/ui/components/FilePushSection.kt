@@ -1,5 +1,6 @@
 package castmaster.app.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -26,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import castmaster.app.theme.castMasterColors
 import java.io.File
 import javax.swing.JFileChooser
 import kotlinx.coroutines.launch
@@ -36,12 +39,14 @@ fun FilePushSection(
     onPush: suspend (File) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val appColors = castMasterColors()
     val scope = rememberCoroutineScope()
     var loading by remember { mutableStateOf(false) }
 
     Card(
         shape = RoundedCornerShape(28.dp),
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant),
+        colors = CardDefaults.cardColors(containerColor = appColors.panel),
+        border = BorderStroke(1.dp, appColors.panelBorder),
         modifier = modifier.fillMaxWidth().height(72.dp),
     ) {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -63,6 +68,12 @@ fun FilePushSection(
                 },
                 enabled = enabled && !loading,
                 shape = RoundedCornerShape(28.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                    disabledContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                ),
             ) {
                 if (loading) {
                     CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
