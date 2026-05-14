@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Power
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.VolumeDown
 import androidx.compose.material.icons.filled.VolumeMute
 import androidx.compose.material.icons.filled.VolumeUp
@@ -206,11 +207,11 @@ fun RemoteSection(
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute") }
                         FilledTonalButton(
-                            onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
+                            onClick = { onShell("input keyevent KEYCODE_SETTINGS") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.VolumeDown, contentDescription = "VolDown") }
+                        ) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
                     }
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
