@@ -222,19 +222,19 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = emphasisColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Power, contentDescription = "Power") }
+                        ) { Icon(Icons.Default.Power, contentDescription = "Toggle power") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_APP_SWITCH") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.AppShortcut, contentDescription = "Recent apps") }
+                        ) { Icon(Icons.Default.AppShortcut, contentDescription = "Open recent apps") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_SETTINGS") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
+                        ) { Icon(Icons.Default.Settings, contentDescription = "Open settings") }
                     }
                     // Reserved space for future buttons
                     Box(modifier = Modifier.weight(1f))
