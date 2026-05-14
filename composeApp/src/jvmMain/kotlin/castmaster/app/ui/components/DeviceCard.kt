@@ -30,6 +30,9 @@ fun DeviceCard(
     modifier: Modifier = Modifier,
 ) {
     val appColors = castMasterColors()
+    val statusContainerColor = if (connected) appColors.successContainer else MaterialTheme.colorScheme.errorContainer
+    val statusContentColor = if (connected) appColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer
+    val statusLabel = if (connected) "Connected" else "Disconnected"
     Card(
         shape = RoundedCornerShape(28.dp),
         colors = CardDefaults.cardColors(containerColor = appColors.panel),
@@ -58,12 +61,12 @@ fun DeviceCard(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Surface(
-                    color = if (connected) appColors.successContainer else MaterialTheme.colorScheme.errorContainer,
-                    contentColor = if (connected) appColors.onSuccessContainer else MaterialTheme.colorScheme.onErrorContainer,
+                    color = statusContainerColor,
+                    contentColor = statusContentColor,
                     shape = RoundedCornerShape(999.dp),
                 ) {
                     Text(
-                        text = if (connected) "Connected" else "Disconnected",
+                        text = statusLabel,
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp),
                     )

@@ -205,7 +205,7 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute volume") }
+                        ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
                             enabled = enabled,
@@ -234,7 +234,7 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Settings, contentDescription = "Open settings") }
+                        ) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
                     }
                     // Reserved space for future buttons
                     Box(modifier = Modifier.weight(1f))
