@@ -205,13 +205,13 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute") }
+                        ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute volume") }
                         FilledTonalButton(
-                            onClick = { onShell("input keyevent KEYCODE_SETTINGS") },
+                            onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
+                        ) { Icon(Icons.Default.VolumeDown, contentDescription = "Volume down") }
                     }
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -222,19 +222,19 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = emphasisColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Power, contentDescription = "app") }
+                        ) { Icon(Icons.Default.Power, contentDescription = "Power") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_APP_SWITCH") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.AppShortcut, contentDescription = "Mute") }
+                        ) { Icon(Icons.Default.AppShortcut, contentDescription = "Recent apps") }
                         FilledTonalButton(
-                            onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
+                            onClick = { onShell("input keyevent KEYCODE_SETTINGS") },
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.VolumeDown, contentDescription = "VolDown") }
+                        ) { Icon(Icons.Default.Settings, contentDescription = "Open settings") }
                     }
                     // Reserved space for future buttons
                     Box(modifier = Modifier.weight(1f))
