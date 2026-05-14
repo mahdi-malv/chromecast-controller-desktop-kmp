@@ -199,7 +199,7 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = controlColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.VolumeUp, contentDescription = "VolUp") }
+                        ) { Icon(Icons.Default.VolumeUp, contentDescription = "Volume up") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_MUTE") },
                             enabled = enabled,
