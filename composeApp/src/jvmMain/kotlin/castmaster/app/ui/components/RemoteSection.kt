@@ -1,5 +1,6 @@
 package castmaster.app.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.material.icons.filled.VolumeMute
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +41,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import castmaster.app.theme.castMasterColors
 
 
 @Composable
@@ -47,16 +50,30 @@ fun RemoteSection(
     onShell: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val appColors = castMasterColors()
+    val controlColors = ButtonDefaults.filledTonalButtonColors(
+        containerColor = appColors.control,
+        contentColor = MaterialTheme.colorScheme.onSurface,
+        disabledContainerColor = appColors.control.copy(alpha = 0.55f),
+        disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f),
+    )
+    val emphasisColors = ButtonDefaults.filledTonalButtonColors(
+        containerColor = appColors.controlEmphasis,
+        contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+        disabledContainerColor = appColors.controlEmphasis.copy(alpha = 0.55f),
+        disabledContentColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.38f),
+    )
     Card(
         shape = RoundedCornerShape(28.dp),
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surfaceVariant),
+        colors = CardDefaults.cardColors(containerColor = appColors.panel),
+        border = BorderStroke(1.dp, appColors.panelBorder),
         modifier = modifier.fillMaxWidth(),
     ) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
             Text(
                 "Remote",
                 style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                color = MaterialTheme.colorScheme.primary,
             )
             Spacer(Modifier.size(8.dp))
             Row(
@@ -73,18 +90,21 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_BACK") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.ArrowBack, contentDescription = null) }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_UP") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.KeyboardArrowUp, contentDescription = null) }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MENU") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.Menu, contentDescription = null) }
@@ -93,18 +113,21 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_LEFT") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.KeyboardArrowLeft, contentDescription = null) }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_CENTER") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.Circle, contentDescription = null) }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_RIGHT") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.KeyboardArrowRight, contentDescription = null) }
@@ -113,6 +136,7 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MEDIA_REWIND") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.FastRewind, contentDescription = "fast-rewind") }
@@ -120,6 +144,7 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_DOWN") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.KeyboardArrowDown, contentDescription = "down") }
@@ -127,6 +152,7 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MEDIA_FAST_FORWARD") },
                             enabled = enabled,
+                            colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.FastForward, contentDescription = "fast-forward") }
@@ -147,16 +173,19 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_HOME") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.Home, contentDescription = "Home") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_BACK") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.ArrowBack, contentDescription = "Back") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MEDIA_PLAY_PAUSE") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.PlayArrow, contentDescription = "Play/Pause") }
                     }
@@ -167,16 +196,19 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_UP") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.VolumeUp, contentDescription = "VolUp") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_MUTE") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.VolumeMute, contentDescription = "Mute") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.VolumeDown, contentDescription = "VolDown") }
                     }
@@ -187,16 +219,19 @@ fun RemoteSection(
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_POWER") },
                             enabled = enabled,
+                            colors = emphasisColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.Power, contentDescription = "app") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_APP_SWITCH") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.AppShortcut, contentDescription = "Mute") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_VOLUME_DOWN") },
                             enabled = enabled,
+                            colors = controlColors,
                             modifier = Modifier.weight(1f),
                         ) { Icon(Icons.Default.VolumeDown, contentDescription = "VolDown") }
                     }

@@ -61,7 +61,7 @@ fun ControlPanel(
         modifier = modifier
             .fillMaxWidth()
             .verticalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
