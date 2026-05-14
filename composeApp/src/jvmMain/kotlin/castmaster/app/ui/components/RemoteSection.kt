@@ -94,21 +94,21 @@ fun RemoteSection(
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.ArrowBack, contentDescription = null) }
+                        ) { Icon(Icons.Default.ArrowBack, contentDescription = "Back") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_UP") },
                             enabled = enabled,
                             colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.KeyboardArrowUp, contentDescription = null) }
+                        ) { Icon(Icons.Default.KeyboardArrowUp, contentDescription = "Navigate up") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MENU") },
                             enabled = enabled,
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Menu, contentDescription = null) }
+                        ) { Icon(Icons.Default.Menu, contentDescription = "Menu") }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         FilledTonalButton(
@@ -117,21 +117,21 @@ fun RemoteSection(
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.KeyboardArrowLeft, contentDescription = null) }
+                        ) { Icon(Icons.Default.KeyboardArrowLeft, contentDescription = "Navigate left") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_CENTER") },
                             enabled = enabled,
                             colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Circle, contentDescription = null) }
+                        ) { Icon(Icons.Default.Circle, contentDescription = "Select") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_RIGHT") },
                             enabled = enabled,
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.KeyboardArrowRight, contentDescription = null) }
+                        ) { Icon(Icons.Default.KeyboardArrowRight, contentDescription = "Navigate right") }
                     }
                     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                         FilledTonalButton(
@@ -140,7 +140,7 @@ fun RemoteSection(
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.FastRewind, contentDescription = "fast-rewind") }
+                        ) { Icon(Icons.Default.FastRewind, contentDescription = "Fast rewind") }
 
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_DPAD_DOWN") },
@@ -148,7 +148,7 @@ fun RemoteSection(
                             colors = emphasisColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.KeyboardArrowDown, contentDescription = "down") }
+                        ) { Icon(Icons.Default.KeyboardArrowDown, contentDescription = "Navigate down") }
 
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_MEDIA_FAST_FORWARD") },
@@ -156,7 +156,7 @@ fun RemoteSection(
                             colors = controlColors,
                             shape = CircleShape,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.FastForward, contentDescription = "fast-forward") }
+                        ) { Icon(Icons.Default.FastForward, contentDescription = "Fast forward") }
                     }
                 }
 
@@ -188,7 +188,7 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = emphasisColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.PlayArrow, contentDescription = "Play/Pause") }
+                        ) { Icon(Icons.Default.PlayArrow, contentDescription = "Play or pause") }
                     }
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -222,7 +222,7 @@ fun RemoteSection(
                             enabled = enabled,
                             colors = emphasisColors,
                             modifier = Modifier.weight(1f),
-                        ) { Icon(Icons.Default.Power, contentDescription = "Toggle power") }
+                        ) { Icon(Icons.Default.Power, contentDescription = "Power button") }
                         FilledTonalButton(
                             onClick = { onShell("input keyevent KEYCODE_APP_SWITCH") },
                             enabled = enabled,
